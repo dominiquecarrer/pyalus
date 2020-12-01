@@ -1,0 +1,113 @@
+nam_inv:
+  bad_cma_elim: false
+  bad_cma_factor: 10.0
+  brdf_clim_activated: false
+  co_bb_bh: [0.004724, 0.537, 0.2805, 0.1297]
+  co_bb_bh_snow: [0.0175, 0.389, 0.3989, -0.0141]
+  co_bb_dh: [0.004724, 0.537, 0.2805, 0.1297]
+  co_bb_dh_snow: [0.0175, 0.389, 0.3989, -0.0141]
+  co_ni_bh: [-0.000426, 0.117, 0.51, 0.3971]
+  co_ni_bh_snow: [0.0189, 0.0942, 0.509, 0.4413]
+  co_ni_dh: [-0.000426, 0.117, 0.51, 0.3971]
+  co_ni_dh_snow: [0.0189, 0.0942, 0.509, 0.4413]
+  co_vi_bh: [0.009283, 0.9606, 0.0497, -0.1245]
+  co_vi_bh_snow: [0.0155, 0.7536, 0.2596, -0.5349]
+  co_vi_dh: [0.009283, 0.9606, 0.0497, -0.1245]
+  co_vi_dh_snow: [0.0155, 0.7536, 0.2596, -0.5349]
+  composition: true
+  initial_value_brdf_age: -1
+  initial_value_brdf_ck: .nan
+  initial_value_brdf_k: .nan
+  initial_value_brdf_quality: 0
+  k_reg: [0.0, 0.03, 0.3, 0.0, 0.03, 0.3, 0.0, 0.03, 0.3]
+  model: 0
+  model_len: 3
+  n_obs_limit: 1
+  n_slot_elim: 1
+  recursion: true
+  shadow_elim: false
+  shadow_factor: 10.0
+  sig_k_reg: [10.0, 0.05, 0.5, 10.0, 0.05, 0.5, 10.0, 0.05, 0.5]
+  sig_nadir_a: [0.001, 0.005, 0.0]
+  sig_nadir_b: [0.07, 0.02, 0.04]
+  sigma_co: 0.01
+  sigrefl_max: 0.05
+  sigrefl_min: 0.005
+  snow_flag_one: true
+  startseries: false
+  time_span_for_composition: {days: 1}
+  timescale: 5.0
+nam_proc: {compression: 0, disposition_flag: O, linesblock: 50, loglinfrequ: 100,
+  path_tmp: tmp/, processing_mode: N, unit: 10}
+nam_scale: {alb_max: 1.0, alb_min: 0.0, cxx_max: 3.0, cxx_min: 0.0, cxy_max: 3.0,
+  cxy_min: -3.0, missingvalue: -1, missingvalue_kcov: -32768, par_max: 3.0, par_min: -3.0,
+  scale_alb: 10000.0, scale_cov: 10000.0, scale_par: 10000.0, scale_sig: 10000.0,
+  sig_max: 1.0, sig_min: 0.0}
+output_channel_names: [C1, C2, C3]
+spectral:
+  MSG:
+    enable_normalisation: false
+    nbands: 3
+    normalisation: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - &id001 !!python/name:numpy.ndarray ''
+      - !!python/tuple [0]
+      - !!binary |
+        Yg==
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [2, 3, 4, 4]
+      - &id002 !!python/object/apply:numpy.dtype
+        args: [f8, 0, 1]
+        state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+      - false
+      - !!binary |
+        AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8A
+        AAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAA
+        AAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAA
+        AAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAA
+        AADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAA
+        APA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA
+        8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADw
+        PwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/
+        AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8A
+        AAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAA
+        AAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAA
+        AAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAA
+        AADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAA
+        APA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/
+    normalisation_err: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - !!binary |
+        Yg==
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [2, 3, 4]
+      - *id002
+      - false
+      - !!binary |
+        AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAA
+        AAAAAADwPwAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAA
+        AAAAAAAAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAAAAA
+        AAAA8D8AAAAAAAAAAAAAAAAAAPA/
+    theta_ref_dh_limit: 85.0
+    theta_sat_limit: 85.0
+    theta_sat_wlimit: 85.0
+    theta_sol_limit: 85.0
+    theta_sol_midi_limit: 85.0
+    theta_sol_wlimit: 85.0
+    typical_cov_rescale: !!python/object/apply:numpy.core.multiarray._reconstruct
+      args:
+      - *id001
+      - !!python/tuple [0]
+      - !!binary |
+        Yg==
+      state: !!python/tuple
+      - 1
+      - !!python/tuple [3]
+      - *id002
+      - false
+      - !!binary |
+        AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/

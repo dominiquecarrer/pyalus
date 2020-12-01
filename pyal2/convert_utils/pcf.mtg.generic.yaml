@@ -1,0 +1,297 @@
+dates:
+  output_date: infer_from_output_filename
+globalconfig: 
+    logdir: log/{name}/
+    n_channels_ref: 3
+    use_cache: false
+    remove_bad_quality_reflectance: false
+    remove_bad_quality_reflectance_but_ignore_band4_qflag: false
+input:
+    MTG:
+        xoutputsize: 5568
+        youtputsize: 5568
+        azimuth_sat:
+            band1:  
+                data_reader_name: mtg_angle
+                filenames: &id001 !!python/tuple []
+            band2:
+                data_reader_name: mtg_angle
+                filenames: *id001
+                key: VAA
+            band3:
+                data_reader_name: mtg_angle
+                filenames: *id001
+            key: VAA
+            band_indexing_list: [band1, band2, band3]
+            band_indexing_method: sparse
+            scenes_dates_indexing_method: dynamic
+        azimuth_sol:
+            band_indexing_method: constant
+            data_reader_name: mtg_angle 
+            filenames: !!python/tuple []
+            key: SAA
+            scenes_dates_indexing_method: dynamic
+        dataloc_reader_name: dataloc_mtg_retrocompatibility
+        input_enddate_key: IMAGE_ACQUISITION_TIME
+        input_startdate_key: IMAGE_ACQUISITION_TIME
+        latitude: 
+            filenames: &id002 !!python/tuple []
+            band_indexing_method: constant
+            data_reader_name: mtg_latitude
+            key: LAT
+            scenes_dates_indexing_method: static
+        longitude: 
+            filenames: *id002
+            band_indexing_method: constant
+            data_reader_name: mtg_latitude
+            key: LON
+            scenes_dates_indexing_method: static
+        lwcs_mask:
+            band1:
+                filenames: &id003 !!python/tuple []
+                data_reader_name: mtg_lwcs_mask
+            band2:
+                filenames:  &id004 !!python/tuple []
+                data_reader_name: mtg_lwcs_mask
+            band3:
+                filenames:  &id005 !!python/tuple []
+                data_reader_name: mtg_lwcs_mask
+            band_indexing_method: full
+            key: BRF_Q_Flag
+            scenes_dates_indexing_method: dynamic
+        sat_specific: 0
+        toc_reflectance:
+            band1: 
+                filenames: *id003
+                data_reader_name: mtg_reflectance_toc
+                key: BRF-TOC
+            band2:
+                filenames: *id004  
+                data_reader_name: mtg_reflectance_toc
+                key: BRF-TOC
+            band3: 
+                filenames: *id005
+                data_reader_name: mtg_reflectance_toc
+                key: BRF-TOC
+            band_indexing_method: full
+            scenes_dates_indexing_method: dynamic
+        toc_reflectance_cov:
+            band1: {filenames: *id003, data_reader_name: empty_reflectance_toc_cov}
+            band2: {filenames: *id004, data_reader_name: empty_reflectance_toc_cov}
+            band3: {filenames: *id005, data_reader_name: empty_reflectance_toc_cov}
+            band_indexing_method: full
+            scenes_dates_indexing_method: dynamic
+        zenith_sat: 
+            band1:
+                data_reader_name: mtg_angle
+                filenames: &id006 []
+            band2:
+                filenames: *id006
+                data_reader_name: mtg_angle
+            band3:
+                filenames: *id006
+                data_reader_name: mtg_angle
+            band_indexing_list: [band1, band2, band3]
+            band_indexing_method: sparse
+            key: VZA
+            scenes_dates_indexing_method: dynamic
+        zenith_sol:
+            filenames: !!python/tuple [input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050000.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050010.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050020.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050030.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050040.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050050.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050100.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050110.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050120.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050130.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050140.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050150.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050200.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050210.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050220.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050230.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050240.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050250.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050300.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050310.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050320.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050330.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050340.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050350.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050400.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050410.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050420.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050430.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050440.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050450.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050500.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050510.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050520.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050530.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050540.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050550.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050600.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050610.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050620.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050630.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050640.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050650.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050700.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050710.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050720.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050730.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050740.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050750.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050800.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050810.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050820.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050830.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050840.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050850.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050900.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050910.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050920.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050930.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050940.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003050950.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051000.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051010.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051020.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051030.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051040.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051050.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051100.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051110.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051120.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051130.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051140.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051150.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051200.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051210.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051220.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051230.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051240.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051250.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051300.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051310.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051320.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051330.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051340.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051350.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051400.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051410.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051420.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051430.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051440.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051450.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051500.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051510.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051520.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051530.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051540.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051550.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051600.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051610.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051620.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051630.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051640.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051650.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051700.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051710.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051720.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051730.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051740.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051750.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051800.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051810.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051820.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051830.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051840.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051850.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051900.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051910.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051920.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051930.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051940.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051950.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052000.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052010.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052020.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052030.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052040.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052050.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052100.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052110.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052120.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052130.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052140.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052150.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052200.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052210.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052220.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052230.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052240.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052250.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052300.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052310.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052320.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052330.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052340.nc,
+            ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052350.nc]
+            data_reader_name: mtg_angle
+            band_indexing_method: constant
+            scenes_dates_indexing_method: dynamic
+            key: SZA
+        output:
+            albedo: 
+                filename: 
+                cov: 
+            albedo-sp:
+                band1: 
+                    filename: 
+                    cov: 
+                band2: 
+                    filename: 
+                    cov: 
+                band3: 
+                    filename: 
+                    cov: 
+            brdf: 
+                band1: 
+                    filename: 
+                    cov: 
+                band2: 
+                    filename: 
+                    cov: 
+                band3: 
+                    filename: 
+                    cov: 
+            brdf-d01: 
+                band1: 
+                    filename: 
+                    cov: 
+                band2: 
+                    filename: 
+                    cov: 
+                band3: 
+                    filename: 
+                    cov: 
+            date_pattern: 1d
+            writer: mtg_writer
+        inputcheckpoint: 
+            filenames:
+                band1: 
+                    values: 
+                    cov: 
+                band2: 
+                    values: 
+                    cov: 
+                band3: 
+                    values: 
+                    cov: 
+            firstdate: 2019/08/08
+            reader: mtg_brdf 
+        output_channel_names: [C1, C2, C3]
+        nam_alg_modes: {mode: 1}  

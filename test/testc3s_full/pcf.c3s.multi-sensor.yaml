@@ -1,0 +1,354 @@
+dates:
+  output_date: [2002/01/01, 2002/12/30]
+globalconfig:
+  logdir: 'log/{name}/'
+  use_cache: true
+  remove_bad_quality_reflectance: true
+  remove_bad_quality_reflectance_but_ignore_band4_qflag: false
+input:
+  VGT:
+    azimuth_sat: 
+      band1: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA}      
+      band2: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA}      
+      band3: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA}      
+      band4: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA}
+      band_indexing_method : sparse
+      band_indexing_list : [band1, band1, band1, band1]
+      scenes_dates_indexing_method : dynamic
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, band_indexing_method: constant, scenes_dates_indexing_method: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: ./data_c3s/vgt/jupyter-avignon/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_VGT_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, band_indexing_method: constant, scenes_dates_indexing_method: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, band_indexing_method: constant, scenes_dates_indexing_method: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 4
+      options: {ignore_quality_bit: null, lwcs_mask_style: VGT}
+      band_indexing_method: constant
+      scenes_dates_indexing_method: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC}
+      band_indexing_method : full
+      scenes_dates_indexing_method: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC_ERR}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC_ERR}
+      band_indexing_method : full
+      scenes_dates_indexing_method: dynamic
+    zenith_sat: 
+      band1: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA}      
+      band2: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA}
+      band3: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA}
+      band4: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA}
+      band_indexing_method : sparse
+      band_indexing_list : [band1, band1, band1, band1]
+      scenes_dates_indexing_method : dynamic
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, band_indexing_method: constant, scenes_dates_indexing_method: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_1KM_VGT_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_1KM_VGT_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    inputcheckpoint: {filename: 'output-{name}/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_VGT_V1.0.nc',
+      firstdate: 2013/10/10, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-{name}/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_VGT_V1.0.nc'}
+      brdf: {filename: 'output-{name}/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_VGT_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  PROBAV:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_probav/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_PROBAV_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 4
+      options: {ignore_quality_bit: null, lwcs_mask_style: VGT}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC_ERR}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_1KM_VGT_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_1KM_VGT_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_PROBAV_V1.0.nc',
+      firstdate: 2013/10/10, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_PROBAV_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_PROBAV_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  AVHRR_NOAA7:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_avhrr/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_AVHRR_NOAA7_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 2
+      options: {ignore_quality_bit: null, lwcs_mask_style: AVHRR}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA7_V1.0.nc',
+      firstdate: 1981/09/10, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_AVHRR_NOAA7_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA7_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  AVHRR_NOAA9:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_avhrr/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_AVHRR_NOAA9_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 2
+      options: {ignore_quality_bit: null, lwcs_mask_style: AVHRR}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA9_V1.0.nc',
+      firstdate: 1985/03/10, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_AVHRR_NOAA9_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA9_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  AVHRR_NOAA11:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_avhrr/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_AVHRR_NOAA11_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 2
+      options: {ignore_quality_bit: null, lwcs_mask_style: AVHRR}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA11_V1.0.nc',
+      firstdate: 1988/11/20, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_AVHRR_NOAA11_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA11_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  AVHRR_NOAA14:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_avhrr/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_AVHRR_NOAA14_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 2
+      options: {ignore_quality_bit: null, lwcs_mask_style: AVHRR}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}    
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA14_V1.0.nc',
+      firstdate: 1995/01/31, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_AVHRR_NOAA14_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA14_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  AVHRR_NOAA16:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_avhrr/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_AVHRR_NOAA16_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 3
+      options: {ignore_quality_bit: null, lwcs_mask_style: AVHRR}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static, parameter_flip: false}    
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA16_V1.0.nc',
+      firstdate: 2001/03/10, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_AVHRR_NOAA16_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA16_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]
+  AVHRR_NOAA17:
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: data_avhrr/{site}/*/*/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_AVHRR_NOAA17_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 3
+      options: {ignore_quality_bit: null, lwcs_mask_style: AVHRR}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+    brdf_clim: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: K012, band_indexing_method: constant, scenes_dates_indexing_method: static}
+    brdf_clim_cov: {data_reader_name: c3s_brdf_clim, filenames: 'brdf_climatic/BRDF_climato_{site}_%m%d_4KM_AVHRR_V1.0.nc', key: CKa, band_indexing_method: constant, scenes_dates_indexing_method: static}    
+    inputcheckpoint: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA17_V1.0.nc',
+      firstdate: 2002/09/10, reader: c3s_brdf}
+    nam_alg_modes: {mode: 1}
+    output:
+      albedo: {filename: 'output-data/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_{site}_AVHRR_NOAA17_V1.0.nc'}
+      brdf: {filename: 'output-data/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_{site}_AVHRR_NOAA17_V1.0.nc'}
+      date_pattern: 10_20_lastdayofthemonth
+      writer: c3s_writer
+    output_channel_names: [B0, B2, B3, MIR]

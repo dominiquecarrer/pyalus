@@ -1,0 +1,9 @@
+*.swp
+*.mod
+*.un~
+.*.swo
+.*.swn
+build/*.o
+pyal2/*.so
+test/*.so
+*.pyc

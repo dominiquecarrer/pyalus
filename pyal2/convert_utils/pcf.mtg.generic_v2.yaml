@@ -1,0 +1,154 @@
+dates:
+  output_date: infer_from_output_filename
+globalconfig: 
+    logdir: log/{name}/
+    n_channels_ref: 3
+    use_cache: false
+    remove_bad_quality_reflectance: false
+    remove_bad_quality_reflectance_but_ignore_band4_qflag: false
+input:
+    MTG:
+        xoutputsize: 5568
+        youtputsize: 5568
+        azimuth_sat:
+            band1:  
+                data_reader_name: mtg_angle
+                filenames: &id001 []
+            band2:
+                data_reader_name: mtg_angle
+                filenames: *id001
+                key: VAA
+            band3:
+                data_reader_name: mtg_angle
+                filenames: *id001
+            key: VAA
+            band_indexing_list: [band1, band1, band1]
+            band_indexing_method: sparse
+            scenes_dates_indexing_method: dynamic
+        azimuth_sol:
+            band_indexing_method: constant
+            data_reader_name: mtg_angle 
+            filenames: []
+            key: SAA
+            scenes_dates_indexing_method: dynamic
+        dataloc_reader_name: dataloc_mtg_retrocompatibility
+        input_enddate_key: IMAGE_ACQUISITION_TIME
+        input_startdate_key: IMAGE_ACQUISITION_TIME
+        latitude: 
+            filenames: []
+            band_indexing_method: constant
+            data_reader_name: mtg_latitude
+            key: LAT
+            scenes_dates_indexing_method: static
+        longitude: 
+            filenames: []
+            band_indexing_method: constant
+            data_reader_name: mtg_latitude
+            key: LON
+            scenes_dates_indexing_method: static
+        lwcs_mask:
+            band1:
+                filenames: &id003 []
+                data_reader_name: mtg_lwcs_mask
+            band2:
+                filenames:  &id004 []
+                data_reader_name: mtg_lwcs_mask
+            band3:
+                filenames:  &id005 []
+                data_reader_name: mtg_lwcs_mask
+            band_indexing_method: full
+            key: BRF_Q_Flag
+            scenes_dates_indexing_method: dynamic
+        sat_specific: 0
+        toc_reflectance:
+            band1: 
+                filenames: *id003
+                data_reader_name: mtg_reflectance_toc
+                key: BRF-TOC
+            band2:
+                filenames: *id004  
+                data_reader_name: mtg_reflectance_toc
+                key: BRF-TOC
+            band3: 
+                filenames: *id005
+                data_reader_name: mtg_reflectance_toc
+                key: BRF-TOC
+            band_indexing_method: full
+            scenes_dates_indexing_method: dynamic
+        toc_reflectance_cov:
+            band1: {filenames: *id003, data_reader_name: empty_reflectance_toc_cov}
+            band2: {filenames: *id004, data_reader_name: empty_reflectance_toc_cov}
+            band3: {filenames: *id005, data_reader_name: empty_reflectance_toc_cov}
+            band_indexing_method: full
+            scenes_dates_indexing_method: dynamic
+        zenith_sat: 
+            band1:
+                data_reader_name: mtg_angle
+                filenames: &id006
+            band2:
+                filenames: *id006
+                data_reader_name: mtg_angle
+            band3:
+                filenames: *id006
+                data_reader_name: mtg_angle
+            band_indexing_list: [band1, band1, band1]
+            band_indexing_method: sparse
+            key: VZA
+            scenes_dates_indexing_method: dynamic
+        zenith_sol:
+            filenames: []
+            data_reader_name: mtg_angle
+            band_indexing_method: constant
+            scenes_dates_indexing_method: dynamic
+            key: SZA
+        output:
+            albedo: 
+                filename: 
+                cov: 
+            albedo-sp:
+                band1: 
+                    filename: 
+                    cov: 
+                band2: 
+                    filename: 
+                    cov: 
+                band3: 
+                    filename: 
+                    cov: 
+            brdf: 
+                band1: 
+                    filename: 
+                    cov: 
+                band2: 
+                    filename: 
+                    cov: 
+                band3: 
+                    filename: 
+                    cov: 
+            brdf-d01: 
+                band1: 
+                    filename: 
+                    cov: 
+                band2: 
+                    filename: 
+                    cov: 
+                band3: 
+                    filename: 
+                    cov: 
+            date_pattern: 1d
+            writer: mtg_writer
+        inputcheckpoint: 
+            filenames:
+                band1: 
+                    values: 
+                    cov: 
+                band2: 
+                    values: 
+                    cov: 
+                band3: 
+                    values: 
+                    cov: 
+            firstdate: 2019/08/08
+            reader: mtg_brdf 
+        output_channel_names: [C1, C2, C3]
+        nam_alg_modes: {mode: 1}  

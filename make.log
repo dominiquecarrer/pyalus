@@ -1,0 +1,39 @@
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/solzenith.f90 -o build/solzenith.o
+f2py -DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION --f90flags='-ffree-line-length-512 -Wall -Wextra -Wno-unused-function' -c build/solzenith.o  fortran_src/brdfmodels.f90 fortran_src/toc_r.f90 -m toc_r --quiet
+/tmp/tmp8h10eto4/src.linux-x86_64-3.6/toc_rmodule.c:184:12: attention : ‘f2py_size’ defined but not used [-Wunused-function]
+ static int f2py_size(PyArrayObject* var, ...)
+            ^
+/tmp/tmp8h10eto4/src.linux-x86_64-3.6/fortranobject.c: Dans la fonction ‘format_def’:
+/tmp/tmp8h10eto4/src.linux-x86_64-3.6/fortranobject.c:138:18: attention : comparaison entre des expressions entières signée et non signée [-Wsign-compare]
+         if (size < sizeof(notalloc)) {
+                  ^
+mkdir -p pyal2/lib
+mv toc_r*.so pyal2/lib/.
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/nr/nrtype.f90 -o build/nrtype.o
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/nr/nrutil.f90 -o build/nrutil.o
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/nr/lubksb.f90 -o build/lubksb.o
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/nr/ludcmp.f90 -o build/ludcmp.o
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/nr/nr.f90 -o build/nr.o
+gfortran -c -O0 -funroll-loops -fPIC fortran_src/invers.f90 -o build/invers.o
+f2py -DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION  --f90flags='-ffree-line-length-512 -Wall -Wextra -Wno-unused-function' -c build/nrtype.o build/nrutil.o build/lubksb.o build/ludcmp.o build/nr.o build/invers.o build/solzenith.o fortran_src/algoconf.f90 fortran_src/brdfmodels.f90 fortran_src/model_fit.f90 fortran_src/albedo_angular_integration.f90 fortran_src/albedo_spectral_integration.f90 -m al2 --quiet only: model_fit albedo_angular_integration albedo_spectral_integration :
+/tmp/tmpqwuq0eei/src.linux-x86_64-3.6/al2module.c:192:12: attention : ‘f2py_size’ defined but not used [-Wunused-function]
+ static int f2py_size(PyArrayObject* var, ...)
+            ^
+/tmp/tmpqwuq0eei/src.linux-x86_64-3.6/fortranobject.c: Dans la fonction ‘format_def’:
+/tmp/tmpqwuq0eei/src.linux-x86_64-3.6/fortranobject.c:138:18: attention : comparaison entre des expressions entières signée et non signée [-Wsign-compare]
+         if (size < sizeof(notalloc)) {
+                  ^
+fortran_src/model_fit.f90:36:19:
+
+       & day_of_year, &
+                   1
+Avertissement: Unused dummy argument ‘day_of_year’ at (1) [-Wunused-dummy-argument]
+fortran_src/model_fit.f90:493:0:
+
+                         refl_cov_tmp(:) = reflectance_cov(X,Y,I,:) / typical_value * 0.75
+ ^
+Avertissement: ‘typical_value’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+mkdir -p pyal2/lib
+mv al2.cpython-36m-x86_64-linux-gnu.so pyal2/lib/.
+echo 'BUILD SUCCESSFULL : Fortran library "al2" successfully compiled into a .so file'
+BUILD SUCCESSFULL : Fortran library "al2" successfully compiled into a .so file

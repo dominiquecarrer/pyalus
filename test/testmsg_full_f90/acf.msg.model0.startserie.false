@@ -1,0 +1,75 @@
+# algorithm configuration file:  albedo v6.3.1
+
+# processing and attribute information
+&NAM_PROC
+LinesBlock       = 50
+Unit             = 10
+LogLinFrequ      = 100
+Compression      = 0
+Path_tmp         = 'tmp/'
+Processing_Mode  = "N"
+Disposition_Flag = "O"
+/
+# scale factors for storage of quantities in integer variables
+&NAM_SCALE
+scale_par = 10000.
+scale_cov = 10000.
+scale_alb = 10000.
+scale_sig = 10000.
+par_min   = -3.
+par_max   = 3.
+cxx_min   = 0.
+cxx_max   = 3.
+cxy_min   = -3.
+cxy_max   = 3.
+alb_min   = 0.
+alb_max   = 1.
+sig_min   = 0.
+sig_max   = 1.
+MissingValue      = -1
+MissingValue_kcov = -32768
+/
+# parameterisation of the algorithm
+&NAM_INV
+model                = 0
+recursion            = .true.
+startseries          = .false.
+composition          = .true.
+bad_CMa_elim         = .false.
+bad_CMa_factor       = 10.
+shadow_elim          = .false.
+shadow_factor        = 10.
+N_slot_elim          = 1
+N_obs_limit          = 1
+timescale            = 5.
+snow_flag_one        = .true.
+theta_sat_limit      = 85.
+theta_sol_limit      = 85.
+theta_sat_wlimit     = 85.
+theta_sol_wlimit     = 85.
+theta_ref_dh_limit   = 85.
+theta_sol_midi_limit = 85.
+k_reg                = 0.0,   0.03,  0.3,
+                       0.0,   0.03,  0.3,
+                       0.0,   0.03,  0.3
+sig_k_reg            = 10.,   0.05,  0.5,
+                       10.,   0.05,  0.5,
+                       10.,   0.05,  0.5
+sig_nadir_a          = 0.001, 0.005, 0.000
+sig_nadir_b          = 0.07,  0.02,  0.04
+sigrefl_min          = 0.005
+sigrefl_max          = 0.05
+sigma_co             = 0.01
+co_bb_dh             =  0.004724, 0.5370, 0.2805, 0.1297
+co_vi_dh             =  0.009283, 0.9606, 0.0497,-0.1245
+co_ni_dh             = -0.000426, 0.1170, 0.5100, 0.3971
+co_bb_dh_snow        =  0.0175  , 0.3890, 0.3989,-0.0141
+co_vi_dh_snow        =  0.0155  , 0.7536, 0.2596,-0.5349
+co_ni_dh_snow        =  0.0189  , 0.0942, 0.5090, 0.4413
+co_bb_bh             =  0.004724, 0.5370, 0.2805, 0.1297
+co_vi_bh             =  0.009283, 0.9606, 0.0497,-0.1245
+co_ni_bh             = -0.000426, 0.1170, 0.5100, 0.3971
+co_bb_bh_snow        =  0.0175  , 0.3890, 0.3989,-0.0141
+co_vi_bh_snow        =  0.0155  , 0.7536, 0.2596,-0.5349
+co_ni_bh_snow        =  0.0189  , 0.0942, 0.5090, 0.4413
+/

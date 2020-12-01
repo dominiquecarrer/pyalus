@@ -1,0 +1,117 @@
+config_version: 1.0
+satellite: MTG
+MODE: 0
+LOG_LEVEL: DEBUG
+TMP_FOLDER: ./tmp
+image_reference_time: 2020-03-05T15:00:00  #2017-04-10T12:00:00 
+ROI: 
+    region_name: FullDisk
+    col_lin_range: [0, 5568, 0, 5568]
+INPUT_RESOURCES:
+    VAA:
+        file_paths: []
+        name: "VAA"
+    VZA:
+        file_paths: []
+        name: "VZA"
+    SAA:
+        file_paths: []
+        name: "SAA"
+    SZA:
+        file_paths: []
+        name: "SZA"
+    TOC_REFLECTANCE_BAND1:
+        file_paths: []
+        name: "RAD_VIS06"
+    TOC_REFLECTANCE_BAND2:
+        file_paths: []
+        name: "RAD_VIS08"
+    TOC_REFLECTANCE_BAND3:
+        file_paths: []
+        name: "RAD_NIR16"
+    TOC_REFLECTANCE_COV_BAND1:
+        file_paths: []
+        name: "RAD_VIS06"
+    TOC_REFLECTANCE_COV_BAND2:
+        file_paths: []
+        name: "RAD_VIS08"
+    TOC_REFLECTANCE_COV_BAND3:
+        file_paths: []
+        name: "RAD_NIR16"
+    LWCS_MASK:
+        file_paths: []
+        name: "lwcs_mask" 
+    LAT:
+        file_paths: []
+        name: "latitude" 
+    LON:
+        file_paths: []
+        name: "longitude" 
+    INPUTCHECKPOINT_BAND1:
+        file_paths: []
+        name: 
+    INPUTCHECKPOINT_BAND2:
+        file_paths: []
+        name: 
+    INPUTCHECKPOINT_BAND3:
+        file_paths: []
+        name: 
+    INPUTCHECKPOINT_BAND1_COV:
+        file_paths: []
+        name: 
+    INPUTCHECKPOINT_BAND2_COV:
+        file_paths: []
+        name: 
+    INPUTCHECKPOINT_BAND3_COV:
+        file_paths: []
+        name: 
+OUTPUT_RESOURCES:
+    ALBEDO_BB:
+        file_paths: []
+        name: AL_BB_BH
+    ALBEDO_BB_COV:
+        file_paths: []
+        name: AL_BB_BH
+    RAD_VIS06:
+        name: RAD_VIS06
+        file_paths: []
+    RAD_VIS08:
+        name: RAD_VIS08
+        file_paths: []
+    RAD_NIR16:
+        name: RAD_NIR16
+        file_paths: []
+    RAD_VIS06_COV:
+        name: RAD_VIS06
+        file_paths: []
+    RAD_VIS08_COV:
+        name: RAD_VIS08
+        file_paths: []
+    RAD_NIR16_COV:
+        name: RAD_NIR16
+        file_paths: []
+    BRDF_VIS06:
+        file_paths: []
+    BRDF_VIS08:
+        file_paths: []
+    BRDF_NIR16:
+        file_paths: []
+    BRDF_VIS06_COV:
+        file_paths: []
+    BRDF_VIS08_COV:
+        file_paths: []
+    BRDF_NIR16_COV:
+        file_paths: []
+    BRDF_VIS06-d01:
+        file_paths: []
+    BRDF_VIS08-d01:
+        file_paths: []
+    BRDF_NIR16-d01:
+        file_paths: []
+    BRDF_VIS06-d01_COV:
+        file_paths: []
+    BRDF_VIS08-d01_COV:
+        file_paths: []
+    BRDF_NIR16-d01_COV:
+        file_paths: []
+

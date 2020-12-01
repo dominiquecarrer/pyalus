@@ -1,0 +1,49 @@
+dates:
+  output_date: [1988/11/30, 1994/10/01]
+globalconfig:
+  logdir: 'log/{name}/'
+  remove_bad_quality_reflectance: true
+  remove_bad_quality_reflectance_but_ignore_band4_qflag: false
+input:
+  '{sensor}':
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false, type: dynamic}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false, type: dynamic}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: /cnrm/vegeo/SAT/DATA_LINK/PROBAV/C3S/TOC/GLOBAL_PLATE_CARREE/2015/02/*/c3s_L2B_*_{site}_[0-9]*[0-9]_[0-9]KM_{sensorstringinfilenames}_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false, type: dynamic}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false, type: dynamic}
+    lwcs_mask:
+      data_reader_name: c3s_lwcs_mask
+      key: /LEVEL2B/QUALITY/SM
+      n_channels: 4
+      options: {ignore_quality_bit: null, lwcs_mask_style: VGT}
+      per_band: false
+      type: dynamic
+    sat_specific: 2
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC}
+      per_band: true
+      type: dynamic
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC_ERR}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC_ERR}
+      per_band: true
+      type: dynamic
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false, type: dynamic}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false, type: dynamic}
+inputcheckpoint: {filename: 'output-{name}/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_GLOBE_{sensorstringinfilenames}_V1.0.nc',
+  firstdate: 2002/09/20, reader: c3s_brdf}
+nam_alg_modes: {mode: 1}
+output:
+  albedo: {filename: 'output-{name}/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_GLOBE_{sensorstringinfilenames}_V1.0.nc'}
+  brdf: {filename: 'output-{name}/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_GLOBE_{sensorstringinfilenames}_V1.0.nc'}
+  date_pattern: 10_20_lastdayofthemonth
+  writer: c3s_writer
+output_channel_names: [B0, B2, B3, MIR]

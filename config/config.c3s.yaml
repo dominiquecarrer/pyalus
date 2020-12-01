@@ -1,0 +1,56 @@
+nam_alg_modes: {mode: 1}
+
+globalconfig:
+    remove_bad_quality_reflectance: true
+    sat_specific: 2
+
+dates:
+  output_date: [2002/09/20, 2002/09/30]
+
+input:
+
+  '{sensor_i}':
+    azimuth_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VAA, per_band: false}
+    azimuth_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SAA, per_band: false}
+    zenith_sat: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/VNIR/VZA, per_band: false}
+    zenith_sol: {data_reader_name: c3s_angle, key: /LEVEL2B/GEOMETRY/SZA, per_band: false}
+    dataloc_reader_name: dataloc_c3s_vgt
+    filenames: /cnrm/vegeo/pinaultf/data/copernicus/from-vito/mirror/Exchange/MeteoFrance/c3sl2_delivery_v1/200209*/c3s_L2B_200209*_{site}_[0-9]*[0-9]_[0-9]KM_{sensor}_V1.0.1.nc
+    input_enddate_key: time_coverage_end
+    input_startdate_key: time_coverage_start
+    latitude: {data_reader_name: c3s_latitude, key: latitudes, per_band: false}
+    longitude: {data_reader_name: c3s_longitude, key: longitudes, per_band: false}
+    lwcs_mask: {data_reader_name: c3s_lwcs_mask, key: /LEVEL2B/QUALITY/SM, n_channels: 4,
+      per_band: false}
+    toc_reflectance:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC}
+      per_band: true
+    toc_reflectance_cov:
+      band1: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band1/TOC_ERR}
+      band2: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band2/TOC_ERR}
+      band3: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band3/TOC_ERR}
+      band4: {data_reader_name: c3s_reflectance_toc, key: /LEVEL2B/RADIOMETRY/band4/TOC_ERR}
+      per_band: true
+
+inputcheckpoint:
+    filename: output-new/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_GLOBE_{sensor}_V1.0.nc
+
+
+output:
+
+  albedo:
+    filename: output-new/{site}/%Y/%m/c_c3s_al_%Y%m%d%H%M%S_GLOBE_{sensor}_V1.0.nc
+    #  keys: {brdf_coefficients: coefficients, brdf_covariance: covariance, brdf_qflag: qualityflag}
+    writer: c3s.writers.brdf
+
+  brdf:
+    filename: output-new/{site}/%Y/%m/c_c3s_brdf_%Y%m%d%H%M%S_GLOBE_{sensor}_V1.0.nc
+    #  keys: {brdf_coefficients: coefficients, brdf_covariance: covariance, brdf_qflag: qualityflag}
+    writer: c3s.writers.brdf
+
+  date_pattern: 10_20_lastdayofthemonth
+
+  output_band_names: [B0, B2, B3, MIR]

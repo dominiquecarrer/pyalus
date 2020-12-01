@@ -1,0 +1,55 @@
+ &NAM_ALG_MODES
+ MODE      = 1
+ /
+ &NAM_ALG_INPUT_FILES_PATH
+ YFILEINP    = 'input/HDF5_LSASAF_MSG_LAT_Disk_201412091000',
+ 'input/HDF5_LSASAF_MSG_AL-C1-K012_Disk_201607312345',
+ 'input/HDF5_LSASAF_MSG_AL-C1-CK_Disk_201607312345',
+ 'input/HDF5_LSASAF_MSG_AL-C2-K012_Disk_201607312345',
+ 'input/HDF5_LSASAF_MSG_AL-C2-CK_Disk_201607312345',
+ 'input/HDF5_LSASAF_MSG_AL-C3-K012_Disk_201607312345',
+ 'input/HDF5_LSASAF_MSG_AL-C3-CK_Disk_201607312345',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_006-BRF_Disk_201608011530.h5',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_008-BRF_Disk_201608011530.h5',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_016-BRF_Disk_201608011530.h5',
+ '/cnrm/vegeo/pinaultf/data/msg/angles/solar/2016/08/01//HDF5_LSASAF_MSG_SAA_MSG-Disk_201608011530',
+ '/cnrm/vegeo/pinaultf/data/msg/angles/solar/2016/08/01//HDF5_LSASAF_MSG_SZA_MSG-Disk_201608011530',
+ '/cnrm/vegeo/pinaultf/data/from-ipma/cache/input-al1-2016/MSG//2016/08/01/HDF5_LSASAF_MSG_VAA_MSG-Disk_201608011530',
+ '/cnrm/vegeo/pinaultf/data/from-ipma/cache/input-al1-2016/MSG//2016/08/01/HDF5_LSASAF_MSG_VZA_MSG-Disk_201608011530',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_006-BRF_Disk_201608011615.h5',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_008-BRF_Disk_201608011615.h5',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_016-BRF_Disk_201608011615.h5',
+ '/cnrm/vegeo/pinaultf/data/msg/angles/solar/2016/08/01//HDF5_LSASAF_MSG_SAA_MSG-Disk_201608011615',
+ '/cnrm/vegeo/pinaultf/data/msg/angles/solar/2016/08/01//HDF5_LSASAF_MSG_SZA_MSG-Disk_201608011615',
+ '/cnrm/vegeo/pinaultf/data/from-ipma/cache/input-al1-2016/MSG//2016/08/01/HDF5_LSASAF_MSG_VAA_MSG-Disk_201608011615',
+ '/cnrm/vegeo/pinaultf/data/from-ipma/cache/input-al1-2016/MSG//2016/08/01/HDF5_LSASAF_MSG_VZA_MSG-Disk_201608011615',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_006-BRF_Disk_201608011645.h5',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_008-BRF_Disk_201608011645.h5',
+ '/cnrm/vegeo/pinaultf/experiments/exp2/enable.aerosol.in.al1.smac.x.0.0/data/out-al1//20160801/HDF5_LSASAF_MSG_016-BRF_Disk_201608011645.h5',
+ '/cnrm/vegeo/pinaultf/data/msg/angles/solar/2016/08/01//HDF5_LSASAF_MSG_SAA_MSG-Disk_201608011645',
+ '/cnrm/vegeo/pinaultf/data/msg/angles/solar/2016/08/01//HDF5_LSASAF_MSG_SZA_MSG-Disk_201608011645',
+ '/cnrm/vegeo/pinaultf/data/from-ipma/cache/input-al1-2016/MSG//2016/08/01/HDF5_LSASAF_MSG_VAA_MSG-Disk_201608011645',
+ '/cnrm/vegeo/pinaultf/data/from-ipma/cache/input-al1-2016/MSG//2016/08/01/HDF5_LSASAF_MSG_VZA_MSG-Disk_201608011645',
+ /
+ &NAM_ALG_OUTPUT_FILES_PATH
+ YFILEOUT  =   'output.short/HDF5_LSASAF_MSG_AL-C1-K012_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C1-CK_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C1_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C2-K012_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C2-CK_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C2_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C3-K012_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C3-CK_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C3_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_ALBEDO_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C1-K012-D01_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C1-CK-D01_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C2-K012-D01_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C2-CK-D01_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C3-K012-D01_Disk_20160801',
+ 'output.short/HDF5_LSASAF_MSG_AL-C3-CK-D01_Disk_20160801'
+  /
+ &NAM_STOP_STATUS_RETRIEVAL_FREQ
+ YFREQINSECS        = 5
+ / 
+

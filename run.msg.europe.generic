@@ -1,0 +1,2 @@
+mkdir -p output; rm -f output/* ; make && ./pyal2/wrapper.py config/acf.msg config/pcf.msg.genericdate -s msg --loglevel warn --chunksize 1000 --cpu 16  --nice 5 --window-predefined europe --dates 20160801 20160802^C
+

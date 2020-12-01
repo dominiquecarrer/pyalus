@@ -1,0 +1,227 @@
+INPUT_RESOURCES:
+  INPUTCHECKPOINT_BAND1:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1-K012_MTG-Disk_%Y%m%d-1day.nc'
+    name: null
+  INPUTCHECKPOINT_BAND1_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1-CK_MTG-Disk_%Y%m%d-1day.nc'
+    name: null
+  INPUTCHECKPOINT_BAND2:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2-K012_MTG-Disk_%Y%m%d-1day.nc'
+    name: null
+  INPUTCHECKPOINT_BAND2_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2-CK_MTG-Disk_%Y%m%d-1day.nc'
+    name: null
+  INPUTCHECKPOINT_BAND3:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3-K012_MTG-Disk_%Y%m%d-1day.nc'
+    name: null
+  INPUTCHECKPOINT_BAND3_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3-CK_MTG-Disk_%Y%m%d-1day.nc'
+    name: null
+  LAT:
+    file_paths: &id001
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+      - ./input/STATIC_DATA/LSA_MTG_LATLON_MTG-FD_202006221150.nc
+    name: latitude
+  LON:
+    file_paths: *id001
+    name: longitude
+  LWCS_MASK:
+    file_paths: [./input/toc/toc_mtg_VIS06_202003051000.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051100.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051200.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051300.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051400.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051500.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051600.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051700.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051800.nc,
+                 ./input/toc/toc_mtg_VIS06_202003051900.nc,
+                 ./input/toc/toc_mtg_VIS06_202003052000.nc,
+                 ./input/toc/toc_mtg_VIS06_202003052100.nc]
+    name: lwcs_mask
+  SAA:
+    file_paths:
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051000.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051100.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051200.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051300.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051400.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051500.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051600.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051700.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051800.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003051900.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003052000.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SAA_MTG-Disk_202003052100.nc
+    name: SAA
+  SZA:
+    file_paths:
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051000.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051100.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051200.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051300.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051400.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051500.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051600.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051700.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051800.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003051900.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052000.nc
+      - ./input/PPSA/2020/03/05/LSA_MTG_SZA_MTG-Disk_202003052100.nc
+    name: SZA
+  TOC_REFLECTANCE_BAND1:
+    file_paths: &id002 
+      - ./input/toc/toc_mtg_VIS06_202003051000.nc
+      - ./input/toc/toc_mtg_VIS06_202003051100.nc
+      - ./input/toc/toc_mtg_VIS06_202003051200.nc
+      - ./input/toc/toc_mtg_VIS06_202003051300.nc
+      - ./input/toc/toc_mtg_VIS06_202003051400.nc
+      - ./input/toc/toc_mtg_VIS06_202003051500.nc
+      - ./input/toc/toc_mtg_VIS06_202003051600.nc
+      - ./input/toc/toc_mtg_VIS06_202003051700.nc
+      - ./input/toc/toc_mtg_VIS06_202003051800.nc
+      - ./input/toc/toc_mtg_VIS06_202003051900.nc
+      - ./input/toc/toc_mtg_VIS06_202003052000.nc
+      - ./input/toc/toc_mtg_VIS06_202003052100.nc
+    name: RAD_VIS06
+  TOC_REFLECTANCE_BAND2:
+    file_paths: &id003 
+      - ./input/toc/toc_mtg_VIS08_202003051000.nc
+      - ./input/toc/toc_mtg_VIS08_202003051100.nc
+      - ./input/toc/toc_mtg_VIS08_202003051200.nc
+      - ./input/toc/toc_mtg_VIS08_202003051300.nc
+      - ./input/toc/toc_mtg_VIS08_202003051400.nc
+      - ./input/toc/toc_mtg_VIS08_202003051500.nc
+      - ./input/toc/toc_mtg_VIS08_202003051600.nc
+      - ./input/toc/toc_mtg_VIS08_202003051700.nc
+      - ./input/toc/toc_mtg_VIS08_202003051800.nc
+      - ./input/toc/toc_mtg_VIS08_202003051900.nc
+      - ./input/toc/toc_mtg_VIS08_202003052000.nc
+      - ./input/toc/toc_mtg_VIS08_202003052100.nc
+    name: RAD_VIS08
+  TOC_REFLECTANCE_BAND3:
+    file_paths: &id004 
+      - ./input/toc/toc_mtg_NIR16_202003051000.nc
+      - ./input/toc/toc_mtg_NIR16_202003051100.nc
+      - ./input/toc/toc_mtg_NIR16_202003051200.nc
+      - ./input/toc/toc_mtg_NIR16_202003051300.nc
+      - ./input/toc/toc_mtg_NIR16_202003051400.nc
+      - ./input/toc/toc_mtg_NIR16_202003051500.nc
+      - ./input/toc/toc_mtg_NIR16_202003051600.nc
+      - ./input/toc/toc_mtg_NIR16_202003051700.nc
+      - ./input/toc/toc_mtg_NIR16_202003051800.nc
+      - ./input/toc/toc_mtg_NIR16_202003051900.nc
+      - ./input/toc/toc_mtg_NIR16_202003052000.nc
+      - ./input/toc/toc_mtg_NIR16_202003052100.nc
+    name: RAD_NIR16
+  TOC_REFLECTANCE_COV_BAND1:
+    file_paths: *id002
+    name: RAD_VIS06
+  TOC_REFLECTANCE_COV_BAND2:
+    file_paths: *id003
+    name: RAD_VIS08
+  TOC_REFLECTANCE_COV_BAND3:
+    file_paths: *id004
+    name: RAD_NIR16
+  VAA:
+    file_paths:
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051000.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051100.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051200.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051300.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051400.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051500.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051600.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051700.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051800.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003051900.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003052000.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VAA_MTG-Disk_202003052100.nc
+    name: VAA
+  VZA:
+    file_paths: 
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051000.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051100.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051200.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051300.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051400.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051500.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051600.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051700.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051800.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003051900.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003052000.nc
+      - ./input/PPMTG/2020/03/05//LSA_MTG_VZA_MTG-Disk_202003052100.nc
+    name: VZA
+LOG_LEVEL: DEBUG
+MODE: 0
+OUTPUT_RESOURCES:
+  ALBEDO_BB:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_ALBEDO_MTG-Disk_%Y%m%d.nc'
+    name: AL_BB_BH
+  ALBEDO_BB_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_ALBEDO_MTG-Disk_%Y%m%d.nc'
+    name: AL_BB_BH
+  BRDF_NIR16:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3-K012_MTG-Disk_%Y%m%d.nc'
+  BRDF_NIR16-d01:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3-K012-D01_MTG-Disk_%Y%m%d.nc'
+  BRDF_NIR16-d01_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3-CK-D01_MTG-Disk_%Y%m%d.nc'
+  BRDF_NIR16_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3-CK_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS06:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1-K012_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS06-d01:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1-K012-D01_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS06-d01_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1-CK-D01_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS06_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1-CK_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS08:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2-K012_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS08-d01:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2-K012-D01_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS08-d01_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2-CK-D01_MTG-Disk_%Y%m%d.nc'
+  BRDF_VIS08_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2-CK_MTG-Disk_%Y%m%d.nc'
+  RAD_NIR16:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3_MTG-Disk_%Y%m%d.nc'
+    name: RAD_NIR16
+  RAD_NIR16_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C3_MTG-Disk_%Y%m%d.nc'
+    name: RAD_NIR16
+  RAD_VIS06:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1_MTG-Disk_%Y%m%d.nc'
+    name: RAD_VIS06
+  RAD_VIS06_COV:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C1_MTG-Disk_%Y%m%d.nc'
+    name: RAD_VIS06
+  RAD_VIS08:
+    file_paths: 'output-{name}/%Y/%m/%d/NC_LSASAF_MTG_AL-C2_MTG-Disk_%Y%m%d.nc'
+    name: RAD_VIS08
+  RAD_VIS08_COV:
+    file_paths: 'output/%Y/%m/%d/NC_LSASAF_MTG_AL-C2_MTG-Disk_%Y%m%d.nc'
+    name: RAD_VIS08
+ROI:
+  col_lin_range:
+  - 0
+  - 5568
+  - 0
+  - 5568
+  region_name: FullDisk
+TMP_FOLDER: ./tmp
+config_version: 1.0
+image_reference_time: 2020-03-05 15:00:00
+satellite: MTG

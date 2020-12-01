@@ -22,21 +22,23 @@ The make process will output loads of warnings, but as long as the .so files is 
 
 - Alternate installation
 `pip install pyal2`
+
 Note : numpy must be installed (error message will be raised).
-Requirement are defined in the file requirement.txt. This may no be up to date.
+Requirements are defined in the file requirements.txt. This file may not be up to date.
 
 ## Usage
 
 See in test/testmsg_pointwise for an example. The script test/testmsg_pointwise/run_albedos.sh uses the configurations files in test/testmsg_pointwise/. It reads its input in test/testmsg_pointwise/input/ and generates files in  test/testmsg_pointwise/output/.
 
 A simple run command is:
+
 `wrapper.py acf.algorithm.configuration.file.yaml pcf.product.configuration.file.yaml`
 
-A more eleborate command using options : (run "wrapper.py -h" to see the list of options)
+A more elaborate command using options : (run "wrapper.py -h" to see the list of options)
 
 `wrapper.py acf.algorithm.configuration.file.yaml pcf.product.configuration.file.yaml -i MSG -f yaml --outputdates 2016-08-01 --keywords name onepoint --loglevel debug -x 1500 1500 -y 1500 1500 --debuglevel 10000 1>log/log.1  2>log/logerr.1`
 
-- Configuration file
+**Configuration files**
 The configuration files are written in yaml. Support for legacy fortran90 namelist file is also provided.
 
 ## Testing
@@ -57,5 +59,5 @@ Note that the data need to be staged before running any test : `make setup_testd
 See the TODO list.
 
 ## Acknowledgements
-Contributors to the code : Bernard Geiger, Florian Pinault, Mickael Parde, Chloe Vincent, and others (Older contributors __to the code__ please contact us to be added the this list).
-Funding : Eumetsat (LSA-SAF), ECMWF/Copernicus (C3S), Meteo-France
+Contributors to the code : Bernard Geiger (most of the fortran code), Florian Pinault (most of the python code), Mickael Parde, Chloe Vincent, and others (older contributors __to the code__ please contact us if you wish to be added to this list).
+Funding : Eumetsat (LSA-SAF), ECMWF/Copernicus (C3S), Meteo-France, CNRS

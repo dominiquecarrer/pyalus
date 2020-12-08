@@ -3,7 +3,7 @@ This sofware applies BRDF kernels models on (Top-Of-Canopy) TOC reflectance data
 It generates a brdf model output (using semi-empirical kernels), includes a Kalman filter. It also applies angular and spectral integrations to generate albedos output.
 The detailed description of the algorithm and discussion on its outputs in various project can be found in the following article :
 
-"Surface  albedo retrieval from 40-years of Earth observations through  the EUMETSAT/LSA-SAF  and  EU/C3S  programmes: methods, common  features and differences between the operations from 11 Earth observing systems", Dominique Carrer, Florian Pinault, Gabriel Lellouch, Isabel F. Trigo, Iskander Benhadj, Roselyne Lacaze, Fernando Camacho, Xavier Ceamanos,Suman Moparthy, Michael Parde, Didier Ramon, Lothar Schuüllr, and Jorge Sanchez Zaper.
+"Surface  albedo retrieval from 40-years of Earth observations through  the EUMETSAT/LSA-SAF  and  EU/C3S  programmes: methods, common  features and differences between the operations from 11 Earth observing systems", Dominique Carrer, Florian Pinault, Gabriel Lellouch, Isabel F. Trigo, Iskander Benhadj, Fernando Camacho, Xavier Ceamanos, Suman Moparthy, Joaquin Munoz Sabater, Lothar Schuüllr, and Jorge Sanchez Zaper.
 
 This code has been thoroughly tested in Meteo-France and used extensively for research on linux. Previous versions have been running on IPMA premises and also used on another system (VITO).
 

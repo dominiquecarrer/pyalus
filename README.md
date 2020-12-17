@@ -1,9 +1,9 @@
 # Pyalus
-This sofware applies BRDF kernels models on (Top-Of-Canopy) TOC reflectance data. We  named  it PYALUS  (PYthon  code  for  ALbedo  retrieval  Using Satellite data).
-It generates a brdf model output (using semi-empirical kernels), includes a Kalman filter. It also applies angular and spectral integrations to generate albedos output.
-The detailed description of the algorithm and discussion on its outputs in various project can be found in the following article :
+This sofware is named PYALUS: PYthon  code  for  ALbedo  retrieval  Using Satellite data.
 
-"Surface  albedo retrieval from 40-years of Earth observations through  the EUMETSAT/LSA-SAF  and  EU/C3S  programmes: methods, common  features and differences between the operations from 11 Earth observing systems", Dominique Carrer, Florian Pinault, Gabriel Lellouch, Isabel F. Trigo, Iskander Benhadj, Fernando Camacho, Xavier Ceamanos, Suman Moparthy, Joaquin Munoz Sabater, Lothar Schuüllr, and Jorge Sanchez Zaper.
+It generates, from (Top-Of-Canopy) TOC reflectance data, brdf model output (using semi-empirical kernels). The mathematic inversion is done by a Kalman filter. It also applies angular and spectral integrations to generate albedo outputs.
+The detailed description of the algorithm and discussion on its outputs in various project can be found in the following article :
+"Surface albedo retrieval from 40-years of Earth observations through the EUMETSAT/LSA SAF and EU/C3S programmes: the versatile algorithm of Pyalus, common features and differences between its operations from 11 Earth observing systems", Dominique Carrer et al., Remote Sensing (Submitted).
 
 This code has been thoroughly tested in Meteo-France and used extensively for research on linux. Previous versions have been running on IPMA premises and also used on another system (VITO).
 
@@ -59,5 +59,5 @@ Note that the data need to be staged before running any test : `make setup_testd
 See the TODO list.
 
 ## Acknowledgements
-Contributors to the code : Bernard Geiger (most of the fortran code), Florian Pinault (most of the python code), Mickael Parde, Chloe Vincent, and others (older contributors __to the code__ please contact us if you wish to be added to this list).
+Contributors to the code : Dominique Carrer and Bernard Geiger (most of the fortran code and scientific developments), Florian Pinault (most of the python code), and others (older contributors __to the code__ please contact us if you wish to be added to this list).
 Funding : Eumetsat (LSA-SAF), ECMWF/Copernicus (C3S), Meteo-France, CNRS
